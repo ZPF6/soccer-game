@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta http-equiv="Cache-Control" content="max-age=31536000"/>
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon"/>
+    <title>极品足球经理2019</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/page.js"></script>
+    <script>
+        var isContinue = 1;
+        $(function () {
+            setTimeout("loadImage()", 1000);
+            // LoadRandomImage();
+        });
+        var LoadRandomImage = function () {
+            //获取canvas的引用
+            var myCanvas = document.getElementById("myCanvas");
+            //获取context的引用
+            var context = myCanvas.getContext("2d");
+            for (var i = 0; i < 6 * 5; i++) {
+                for (var j = 0; j < 6 * 5; j++) {
+                    var type = getRandomInteger(3);
+                    if (type == 0) {
+                        drawRectangle(context, i * 20, j * 20, getRandomInteger(100), getRandomInteger(100), getRandomColor());
+                    } else if (type == 1) {
+                        var startAngle = getRandomInteger(180);
+                        drawArc(context, i * 20, j * 20, getRandomInteger(100), startAngle, startAngle + getRandomInteger(180), getRandomColor(), getRandomColor(), 1);
+                    } else {
+                        var startAngle = getRandomInteger(180);
+                        drawEllipse(context, i * 20, j * 20, getRandomInteger(100), getRandomInteger(100), getRandomInteger(360), startAngle, startAngle + getRandomInteger(180), getRandomColor(), getRandomColor(), 1);
+                    }
+                }
+            }
+        }
+        var getId = function () {
+            return (new Date().getTime()) + "" + getRandomInteger(10) + getRandomInteger(10) + getRandomInteger(10) + getRandomInteger(10) + getRandomInteger(10) + getRandomInteger(10);
+        };
+        var loadImage = function () {
+            var id = getId();
+            $("body").append("<canvas id=\"myCanvas_" + id + "\" width=\"132\" height=\"157\">想看图？快去升级你的浏览器吧~</canvas>" +
+                // "<image id = 'scream' style='height:600px;width:600px;'></image>" +
+                "");
+            //获取canvas的引用
+            var myCanvas = document.getElementById("myCanvas_" + id + "");
+            //获取context的引用
+            var context = myCanvas.getContext("2d");
+            drawRectangle(context, 0, 0, 132, 157, "#FFFFFF");
+            //脸部
+            context.beginPath();
+            //起始位置移动到x,y参数指定的点
+            // context.moveTo(x,y);
+            //向坐标为(x+rectWidth,y)的点画一条路径
+            context.arc(10, 56, 99, 0 * Math.PI / 180, 55 * Math.PI / 180);
+            context.arc(60, 125, 13, 50 * Math.PI / 180, 130 * Math.PI / 180);
+            context.arc(110, 56, 99, 126 * Math.PI / 180, 180 * Math.PI / 180);
+            var randomInteger1 = getRandomInteger(20)
+            var randomInteger2 = getRandomInteger(6)
+            context.arc(60, 70 + randomInteger1, 46 + randomInteger2, 180 * Math.PI / 180, 0 * Math.PI / 180, false);
+            //闭合路径
+            context.closePath();
+            //设置颜色
+            var colorFace = getRandomColorWithBaseColorAndPlusColor(2, 14)
+            context.fillStyle = colorFace;
+            //填充由我们所绘路径形成的矩形
+            context.fill();
+            //设置颜色
+            context.fillStyle = getRandomColorWithBaseColorAndPlusColor(6, 6);
+            //设置描绘线条的宽度
+            context.lineWidth = 1;
+            //描线
+            context.stroke();
+            // drawArcSingleLine(context, 110, 56, 99, 126, 180, getRandomColor(), getRandomColor(),1);
+            // drawArcSingleLine(context, 10, 56, 99, 0, 55, getRandomColor(), getRandomColor(),1);
+            // drawArcSingleLine(context, 60, 125, 13, 50, 130, getRandomColor(), getRandomColor(),1);
+            //头发
+            //开始一个路径
+            context.beginPath();
+            //起始位置移动到x,y参数指定的点
+            // context.moveTo(x,y);
+            //向坐标为(x+rectWidth,y)的点画一条路径
+            context.arc(60, 56, 50, 0 * Math.PI / 180, 180 * Math.PI / 180, true);
+            context.arc(60, 70 + randomInteger1, 46 + randomInteger2, 180 * Math.PI / 180, 0 * Math.PI / 180, false);
+            // context.arc(x, y, radius, endAngle * Math.PI / 180, startAngle * Math.PI / 180,true);
+            //闭合路径
+            context.closePath();
+            //设置颜色
+            context.fillStyle = getRandomColor();
+            //填充由我们所绘路径形成的矩形
+            context.fill();
+
+            //左边鬓角
+            context.fillStyle = getRandomColor();
+            // context.fillRect(10, 40, getRandomInteger(20), 20);
+            //右边鬓角
+            context.fillStyle = getRandomColor();
+            // var length = getRandomInteger(20);
+            // context.fillRect(90+20-length, 40, length, 20);
+            var rotate = getRandomInteger(20) * Math.PI / 180;
+            var xEye = getRandomInteger(10) - 5;
+            var yEye = getRandomInteger(20)-10;
+            var heightEye = getRandomInteger(3)-1;
+            var lengthEye = getRandomInteger(7)-3;
+            var lengthEyeBall = getRandomInteger(5)-2;
+            var colorEye = getRandomColorWithBaseColorAndPlusColor(2, 13);
+            //左眉毛
+            // drawArcSingleLine(context, 40,73,20,240,300,getRandomColorWithBaseColorAndPlusColor(3,0),getRandomColor(),1);
+            drawEllipseSingleLine(context, 40 + xEye, 58+yEye, 10+lengthEye, 6, rotate, 180, 360, getRandomColorWithBaseColorAndPlusColor(6, 0), getRandomColor(), 1);
+            //右眉毛
+            // drawArcSingleLine(context, 81,73,20,240,300,getRandomColorWithBaseColorAndPlusColor(3,0),getRandomColor(),1);
+            drawEllipseSingleLine(context, 81 - xEye, 58+yEye, 10+lengthEye, 6, 0 - rotate, 180, 360, getRandomColorWithBaseColorAndPlusColor(6, 0), getRandomColor(), 1);
+            //左边眼睛
+            //左边眼睛眼眶
+            drawEllipse(context, 40 + xEye, 68+yEye, 10+lengthEye, 7+heightEye, rotate, 0, 360, colorEye, getRandomColor(), 1);
+            // drawRectangle(context, 25, 70, 25, 15, getRandomColor());
+            var colorEyeBall = "#000000";
+            //左边眼睛眼球
+            drawCircle(context, 40 + xEye, 68+yEye, 3+lengthEyeBall, colorEyeBall, getRandomColor(), 1);
+            // drawRectangle(context, 38, 70, 12, 15, getRandomColor());
+            //右边眼睛
+            //右边眼眶
+            drawEllipse(context, 81 - xEye, 68+yEye, 10+lengthEye, 7+heightEye, 0 - rotate, 0, 360, colorEye, getRandomColor(), 1);
+            // drawRectangle(context, 70, 70, 25, 15, getRandomColor());
+            //右边眼睛眼球
+            drawCircle(context, 81 - xEye, 68+yEye, 3+lengthEyeBall, colorEyeBall, getRandomColor(), 1);
+            // drawRectangle(context, 70, 70, 12, 15, getRandomColor());
+            //鼻子
+            var lengthNose = getRandomInteger(16) + 3;
+            var widthNose = getRandomInteger(3);
+            var heightNose = getRandomInteger(6) - 3;
+            var sizeNose = getRandomInteger(3);
+            drawRectangleWithoutBorder(context, 59, 90 - lengthNose + heightNose - sizeNose, 3 + widthNose, 6 + lengthNose, getRandomColor(), getRandomColor(), 0);
+            var colorNose = getRandomColor();
+            // drawCircle(context, 59 - widthNose - sizeNose, 100 + heightNose, 1 + sizeNose, colorNose, getRandomColor(), 1);
+            // drawCircle(context, 62 + widthNose + sizeNose, 100 + heightNose, 1 + sizeNose, colorNose, getRandomColor(), 1);
+            //drawRectangle(context, 54, 88, 12, 12, getRandomColor());
+            //嘴巴
+            var heightMouth = getRandomInteger(10) - 5;
+            var lengthMouth = getRandomInteger(60) - 30;
+            var radiusMouth = getRandomInteger(10) - 5;
+            // drawArcSingleLine(context, 10, 56, 99, 0, 59, getRandomColor(), getRandomColor(),1);
+            drawArcSingleLine(context, 60, 110 + heightMouth, 13 + radiusMouth, 50 + lengthMouth, 130 - lengthMouth, getRandomColor(), getRandomColor(), 1);
+            //drawRectangle(context, 38, 106, 42, 20, getRandomColor());
+            //舌头
+            //drawRectangle(context, 50, 116, 20, 10, getRandomColor());
+            // 脖子
+            drawRectangleWithoutBorder(context, 39, 127, 1, 20, getRandomColor());
+            drawRectangleWithoutBorder(context, 79, 127, 1, 20, getRandomColor());
+            // if (isContinue == 1) {
+            //     setTimeout("loadImage()", 1);
+            // }
+            var image = myCanvas.toDataURL("image/jpeg", 0.5);
+            // $(".class-div-main").html(image);
+            return image;
+        }
+
+        function drawRectangleWithoutBorder(context, x, y, rectWidth, rectHeight, color) {
+            //开始一个路径
+            context.beginPath();
+            //起始位置移动到x,y参数指定的点
+            context.moveTo(x, y);
+            //向坐标为(x+rectWidth,y)的点画一条路径
+            context.lineTo(x + rectWidth, y);
+            //向坐标为(x+rectWidth,y+rectHeight)的点画一条路径
+            context.lineTo(x + rectWidth, y + rectHeight);
+            //向坐标为(x,y+rectHeight)的点画一条路径
+            context.lineTo(x, y + rectHeight);
+            //闭合路径
+            context.closePath();
+            //设置颜色
+            context.fillStyle = color;
+            //填充由我们所绘路径形成的矩形
+            context.fill();
+        }
+
+        function drawRectangle(context, x, y, rectWidth, rectHeight, color, lineColor, lineWidth) {
+            //开始一个路径
+            context.beginPath();
+            //起始位置移动到x,y参数指定的点
+            context.moveTo(x, y);
+            //向坐标为(x+rectWidth,y)的点画一条路径
+            context.lineTo(x + rectWidth, y);
+            //向坐标为(x+rectWidth,y+rectHeight)的点画一条路径
+            context.lineTo(x + rectWidth, y + rectHeight);
+            //向坐标为(x,y+rectHeight)的点画一条路径
+            context.lineTo(x, y + rectHeight);
+            //闭合路径
+            context.closePath();
+            //设置颜色
+            context.fillStyle = color;
+            //填充由我们所绘路径形成的矩形
+            context.fill();
+            //设置颜色
+            context.fillStyle = lineColor;
+            //设置描绘线条的宽度
+            context.lineWidth = lineWidth;
+            //描线
+            context.stroke();
+        }
+
+        function drawArcSingleLine(context, x, y, radius, startAngle, endAngle, color, lineColor, lineWidth) {
+            //开始一个路径
+            context.beginPath();
+            //起始位置移动到x,y参数指定的点
+            // context.moveTo(x,y);
+            //向坐标为(x+rectWidth,y)的点画一条路径
+            context.arc(x, y, radius, startAngle * Math.PI / 180, endAngle * Math.PI / 180);
+            context.arc(x, y, radius, endAngle * Math.PI / 180, startAngle * Math.PI / 180, true);
+            //闭合路径
+            context.closePath();
+            //设置颜色
+            context.fillStyle = color;
+            //填充由我们所绘路径形成的矩形
+            context.fill();
+            //设置颜色
+            context.fillStyle = lineColor;
+            //设置描绘线条的宽度
+            context.lineWidth = lineWidth;
+            //描线
+            context.stroke();
+        }
+
+        function drawArc(context, x, y, radius, startAngle, endAngle, color, lineColor, lineWidth, counterClockWise) {
+            //开始一个路径
+            context.beginPath();
+            //起始位置移动到x,y参数指定的点
+            // context.moveTo(x,y);
+            //向坐标为(x+rectWidth,y)的点画一条路径
+            context.arc(x, y, radius, startAngle * Math.PI / 180, endAngle * Math.PI / 180, counterClockWise);
+            // context.arc(x, y, radius, endAngle * Math.PI / 180, startAngle * Math.PI / 180,true);
+            //闭合路径
+            context.closePath();
+            //设置颜色
+            context.fillStyle = color;
+            //填充由我们所绘路径形成的矩形
+            context.fill();
+            //设置颜色
+            context.fillStyle = lineColor;
+            //设置描绘线条的宽度
+            context.lineWidth = lineWidth;
+            //描线
+            context.stroke();
+        }
+
+        function drawCircle(context, x, y, radius, color, lineColor, lineWidth) {
+            //开始一个路径
+            context.beginPath();
+            //起始位置移动到x,y参数指定的点
+            // context.moveTo(x,y);
+            //向坐标为(x+rectWidth,y)的点画一条路径
+            context.arc(x, y, radius, 0 * Math.PI / 180, 360 * Math.PI / 180);
+            //闭合路径
+            context.closePath();
+            //设置颜色
+            context.fillStyle = color;
+            //填充由我们所绘路径形成的矩形
+            context.fill();
+            //设置颜色
+            context.fillStyle = lineColor;
+            //设置描绘线条的宽度
+            context.lineWidth = lineWidth;
+            //描线
+            context.stroke();
+        }
+
+        function drawEllipse(context, x, y, radiusx, radiusy, rotation, startAngle, endAngle, color, lineColor, lineWidth) {
+            //开始一个路径
+            context.beginPath();
+            //起始位置移动到x,y参数指定的点
+            // context.moveTo(x,y);
+            //向坐标为(x+rectWidth,y)的点画一条路径
+            context.ellipse(x, y, radiusx, radiusy, rotation, startAngle * Math.PI / 180, endAngle * Math.PI / 180, false);
+            // context.ellipse(x , y , radiusx , radiusy, rotation, startAngle * Math.PI / 180, endAngle * Math.PI / 180, true);
+            //闭合路径
+            context.closePath();
+            //设置颜色
+            context.fillStyle = color;
+            //填充由我们所绘路径形成的矩形
+            context.fill();
+            //设置颜色
+            context.fillStyle = lineColor;
+            //设置描绘线条的宽度
+            context.lineWidth = lineWidth;
+            //描线
+            context.stroke();
+        }
+
+        function drawEllipseSingleLine(context, x, y, radiusx, radiusy, rotation, startAngle, endAngle, color, lineColor, lineWidth) {
+            //开始一个路径
+            context.beginPath();
+            //起始位置移动到x,y参数指定的点
+            // context.moveTo(x,y);
+            //向坐标为(x+rectWidth,y)的点画一条路径
+            context.ellipse(x, y, radiusx, radiusy, rotation, startAngle * Math.PI / 180, endAngle * Math.PI / 180, false);
+            context.ellipse(x, y, radiusx, radiusy, rotation, endAngle * Math.PI / 180, startAngle * Math.PI / 180, true);
+            //闭合路径
+            context.closePath();
+            //设置颜色
+            context.fillStyle = color;
+            //填充由我们所绘路径形成的矩形
+            context.fill();
+            //设置颜色
+            context.fillStyle = lineColor;
+            //设置描绘线条的宽度
+            context.lineWidth = lineWidth;
+            //描线
+            context.stroke();
+        }
+
+
+        var transferNumber = function (number) {
+            if (number < 10) {
+                return number;
+            }
+            var transfer = ['a', 'b', 'c', 'd', 'e', 'f'];
+            if (number > 15) {
+                return undefined;
+            }
+            return transfer[number - 10];
+        }
+
+        var getRandomColor = function () {
+            return "#" +
+                transferNumber(getRandomInteger(16)) +
+                transferNumber(getRandomInteger(16)) +
+                transferNumber(getRandomInteger(0)) +
+                transferNumber(getRandomInteger(0)) +
+                transferNumber(getRandomInteger(16)) +
+                transferNumber(getRandomInteger(16));
+        }
+
+        var getRandomColorWithBaseColorAndPlusColor = function (baseColor, plusColor) {
+            return "#" +
+                transferNumber(getRandomInteger(baseColor) + plusColor) +
+                transferNumber(getRandomInteger(baseColor) + plusColor) +
+                transferNumber(getRandomInteger(baseColor) + plusColor) +
+                transferNumber(getRandomInteger(baseColor) + plusColor) +
+                transferNumber(getRandomInteger(baseColor) + plusColor) +
+                transferNumber(getRandomInteger(baseColor) + plusColor);
+        }
+
+        var startStopLoadImage = function () {
+            loadImage();
+        }
+
+    </script>
+</head>
+<body>
+<div class='class-div-top'>
+    <button onclick="startStopLoadImage()">开始/停止</button>
+</div>
+<div class="class-div-article">
+    <div class="class-div-main-outer" style="">
+        <div class="class-div-main"></div>
+    </div>
+</div>
+<div class="class-div-footer">
+</div>
+</body>
+</html>
